@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import NavBar from './components/navBar';
 import { Button } from '@mui/material';
+import "@squidcloud/ui/styles/index.css";
 import DisplayPets from './components/displayPets';
 import { FavoritePets } from './common/favoritePets';
 import AiDatabot from './components/aiDatabot';
