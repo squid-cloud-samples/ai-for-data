@@ -8,7 +8,7 @@
     "format": "prettier . --write"
   },
   "devDependencies": {
-    "@squidcloud/samples": "^1.0.12",
+    "@squidcloud/samples": "^1.0.11",
     "prettier": "^3.2.5"
   },
   "workspaces": [
