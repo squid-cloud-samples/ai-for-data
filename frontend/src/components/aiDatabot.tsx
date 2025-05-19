@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useSquid } from '@squidcloud/react';
 import Messages from './messages';
-import { AiResponse } from '../common/favoritePets';
+import { AiResponse } from '../../../common/types.ts';
 
 const AiDatabot = () => {
   const [question, setQuestion] = useState('');

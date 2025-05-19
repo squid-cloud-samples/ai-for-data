@@ -1,19 +1,19 @@
-import { SquidService, executable } from '@squidcloud/backend';
+import {SquidService, executable} from '@squidcloud/backend';
+import {generateShortId} from '@squidcloud/client';
 
 export class AddDataService extends SquidService {
   @executable()
   async addMockData(): Promise<void> {
-    const votes = ['cat', 'dog', 'bird', 'fish', 'reptile'];
-    // add 30 random documents to the animals collection
+    const diagnoses = ['asthma', 'diabetes', 'hypertension', 'back pain', 'flu', 'allergies'];
+    // add 30 random documents to the health_data collection
     await this.squid.runInTransaction(async (transactionId: string) => {
       for (let i = 0; i < 30; i++) {
-        const favPet = votes[Math.floor(Math.random() * votes.length)];
-        // hopefully people's current pet is more likely to be their favorite, so let's improve those odds
-        const currPetVotes = [...votes, favPet, favPet, favPet, favPet];
-        const currPet = currPetVotes[Math.floor(Math.random() * currPetVotes.length)];
-        this.squid.collection('animals').doc().insert({ favorite_pet: favPet, current_pet: currPet }, transactionId);
+        const diagnosis = diagnoses[Math.floor(Math.random() * diagnoses.length)];
+        const age = Math.floor(Math.random() * (80 - 25 + 1)) + 25;
+        const patientId = generateShortId(6);
+        await this.squid.collection('health_data').doc().insert({patientId, age, diagnosis}, transactionId);
       }
     });
-    console.log('Done adding pets');
+    console.log('Done adding data');
   }
 }

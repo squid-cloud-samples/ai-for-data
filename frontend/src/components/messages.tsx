@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import React from 'react';
-import { AiResponse } from '../common/favoritePets';
+import { AiResponse } from '../../../common/types.ts';
 interface ChatHistoryProps {
   messages: AiResponse[];
 }

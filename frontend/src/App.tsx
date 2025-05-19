@@ -4,30 +4,30 @@ import { useState } from 'react';
 import NavBar from './components/navBar';
 import { Button } from '@mui/material';
 import "@squidcloud/ui/styles/index.css";
-import DisplayPets from './components/displayPets';
-import { FavoritePets } from './common/favoritePets';
+import DisplayData from './components/displayData.tsx';
 import AiDatabot from './components/aiDatabot';
+import {HealthData} from "../../common/types.ts";
 
 function App() {
-  const favoritePetsCollection = useCollection<FavoritePets>('animals');
+  const healthDataCollection = useCollection<HealthData>('health_data');
   const { executeFunction } = useSquid();
-  const { data } = useQuery(favoritePetsCollection.query().dereference());
+  const { data } = useQuery(healthDataCollection.query().dereference());
 
   // prevent adding mock data multiple times
   const [dataIsAdded, setDataIsAdded] = useState(false);
 
-  const addData = () => {
-    executeFunction('addMockData');
+  const addData = async () => {
+    await executeFunction('addMockData');
     setDataIsAdded(true);
   };
 
   return (
     <div>
       <NavBar />
-      {data && <DisplayPets favoritePets={data} />}
-      <Button onClick={() => addData()} hidden={dataIsAdded}>
+      {data && <DisplayData healthData={data} />}
+      {!dataIsAdded && <Button onClick={() => addData()}>
         Add Mock Data
-      </Button>
+      </Button>}
       <AiDatabot />
     </div>
   );
