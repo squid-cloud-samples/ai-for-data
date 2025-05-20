@@ -1,8 +1,8 @@
-export interface FavoritePets {
-  favorite_pet: string;
-  current_pet: string;
+export interface HealthData {
+  patientId: string;
+  age: number;
+  diagnosis: string;
 }
-
 export interface AiResponse {
   author: string;
   answer: string;

@@ -1,11 +1,5 @@
 import { SquidService, executable } from '@squidcloud/backend';
-
-interface AiResponse {
-  author: string;
-  answer: string;
-  executedQuery?: string;
-  explanation?: string;
-}
+import {AiResponse} from '../../../common/types';
 
 export class SquidAiDataService extends SquidService {
   @executable()
